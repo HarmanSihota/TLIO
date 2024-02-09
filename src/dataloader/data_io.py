@@ -54,9 +54,9 @@ class DataIO:
         """
         logging.info(
             "loading vio states from "
-            + osp.join(args.root_dir, dataset, "imu0_resampled.npy")
+            + osp.join(args.root_dir, dataset, "imu0_resampled_adjusted_100Hz.npy")
         )
-        data = np.load(osp.join(args.root_dir, dataset, "imu0_resampled.npy"))
+        data = np.load(osp.join(args.root_dir, dataset, "imu0_resampled_adjusted_100Hz.npy"))
         self.vio_ts_us = data[:, 0]
         self.vio_ts = data[:, 0] * 1e-6
         self.vio_rq = data[:,-10:-6]

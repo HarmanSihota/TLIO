@@ -111,7 +111,7 @@ class SequencesDataset:
         if self.genparams.data_style == "aligned":
             return [COMBINED_SENSOR_NAME]
         elif self.genparams.data_style == "resampled":
-            return [s + "_resampled" for s in ALL_SENSORS_LIST if s in self.genparams.input_sensors]
+            return [s + "_resampled_adjusted_100.0Hz" for s in ALL_SENSORS_LIST if s in self.genparams.input_sensors]
         elif self.genparams.data_style == "raw":
             return [s for s in ALL_SENSORS_LIST if s in self.genparams.input_sensors]
         else:

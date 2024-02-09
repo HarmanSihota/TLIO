@@ -281,6 +281,7 @@ def net_train(args):
         dataset_style=args.dataset_style, 
         num_workers=args.workers,
         persistent_workers=args.persistent_workers,
+        window_size=data_window_config["window_size"]
     )
     data.prepare_data()
     

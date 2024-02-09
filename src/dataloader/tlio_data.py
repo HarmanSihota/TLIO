@@ -37,8 +37,9 @@ class TlioData:
         ignore_tasks=None,
         decimator=10,
         dataset_style="mmap", # "mmap", "ram", or "iter". "iter" is best for huge datasets but sacrifice true randomness, mmap can go a bit farther than "ram" which just stores all in memory
+        window_size = None,
         data_window_config={
-            "window_size": 200, # 200 window size @200 Hz for 1sec of input data
+            "window_size": 100, # 100 window size @100 Hz for 1sec of input data
             "step_period_us": 5000, # NOTE: unused at this point
             "data_in_t0_yaw_normalized_frame": False,
             "input_sensors": ["imu0"],
@@ -64,6 +65,7 @@ class TlioData:
         self.batch_size = batch_size
         self.data_path = data_path
         self.data_window_config = data_window_config
+        self.data_window_config["window_size"] = window_size if window_size is not None else 100
         self.augmentation_options = augmentation_options
         self.num_workers = num_workers
         self.persistent_workers = persistent_workers and num_workers > 0
